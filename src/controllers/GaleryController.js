@@ -7,7 +7,6 @@ module.exports = {
 
     const photos = await Galery.paginate({}, {
       page,
-      limit: 4,
       offset,
       sort: { createdAt: 1 }
     });
@@ -23,11 +22,11 @@ module.exports = {
 
   async store(request, response) {
     const { legend } = request.body;
-    const galeyImage = request.file.filename;
+    const galeryImage = request.file.filename;
 
     const photo = await Galery.create({
       legend,
-      imageUrl: `${process.env.APP_URL}/uploads/${galeyImage}`,
+      imageUrl: `${process.env.APP_URL}/uploads/${galeryImage}`,
       createdAt: new Date(),
     });
 
